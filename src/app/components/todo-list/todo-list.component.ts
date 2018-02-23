@@ -26,11 +26,13 @@ export class TodoListComponent implements OnInit {
     if(el){
       todoitem.active = !todoitem.active;
 
-      // toggle CSS styles
-      if(todoitem.active == true)
-        el.setAttribute('class', 'active');
-      else
-        el.setAttribute('class', 'inactive');
+      this.todoService.update(todoitem.id, todoitem).subscribe(response => {
+        // toggle CSS styles
+        if(todoitem.active == true)
+          el.setAttribute('class', 'active');
+        else
+          el.setAttribute('class', 'inactive');
+      });
     }
   }
 
