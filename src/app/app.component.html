@@ -1,10 +1,14 @@
 <div class="container">
   <h1>{{ title }}</h1>
 
-  <app-todo-list></app-todo-list>
+  <nav>
+      <button type="button" class="btn btn-primary" routerLink="/list">List</button>
+      <button type="button" class="btn btn-success" routerLink="/add">New</button>
+      <button type="button" class="btn btn-warning">About</button>
+  </nav>
 
   <p></p>
 
-  <app-todo-add></app-todo-add>
+  <router-outlet></router-outlet>
 
 </div>
