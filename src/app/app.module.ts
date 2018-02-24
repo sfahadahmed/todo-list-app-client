@@ -8,6 +8,7 @@ import { TodoService } from './services/todo.service';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoAddComponent } from './components/todo-add/todo-add.component'
 import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
+import { AboutComponent } from './components/about/about.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -16,7 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     TodoListComponent,
     TodoAddComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
