@@ -22,8 +22,8 @@ export class TodoAddComponent implements OnInit {
     this.todoItem = new TodoItem();
   }
 
-  addTodoItem(): void {
-    console.log("-- addTodoItem() --");
+  add(): void {
+    console.log("-- add() --");
     console.log(this.todoItem);
     this.todoService.create(this.todoItem).subscribe(response => {
       this.location.back();
