@@ -7,14 +7,16 @@ import { AppComponent } from './app.component';
 import { TodoService } from './services/todo.service';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoAddComponent } from './components/todo-add/todo-add.component'
+import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
 
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoAddComponent
+    TodoAddComponent,
+    TodoDetailComponent
   ],
   imports: [
     BrowserModule,
