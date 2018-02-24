@@ -1,0 +1,29 @@
+<div class="card" *ngIf="todoItem">
+    <div class="card-body">
+
+      <h4 class="card-title">Details</h4>
+
+      <p class="card-text">View and edit details about the todo item</p>
+
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" [(ngModel)]="todoItem.title" placeholder="title">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" rows="5" id="description" [(ngModel)]="todoItem.description" placeholder="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="active">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="checkbox" class="form-check-input" id="active" [(ngModel)]="todoItem.active">Active
+      </div>
+
+      <div class="form-group">
+        <button type="button" class="btn btn-success" (click)="update()">Update</button>
+        <button type="button" class="btn btn-primary" (click)="cancel()">Cancel</button>
+      </div>
+
+    </div>
+  </div>
