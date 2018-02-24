@@ -19,12 +19,20 @@
                         <span *ngIf="!todoItem.active;else inactive_todoitem">
                             <input type="checkbox" class="form-check-input" id="checkbox_{{todoItem.id}}" value="todoItem.id" (click)="toggle(todoItem)" checked>
                             <a href="#" id="todoitem_{{todoItem.id}}" class="inactive" routerLink="/detail/{{todoItem.id}}">{{todoItem.title}}</a>
+                            &nbsp;
+                            <button type="button" class="close" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </span>
 
                         <!-- SHOW ONLY IF ITEM IS NOT ACTIVE -->
                         <ng-template #inactive_todoitem>
                             <input type="checkbox" class="form-check-input" id="checkbox_{{todoItem.id}}" value="todoItem.id" (click)="toggle(todoItem)">
                             <a href="#" id="todoitem_{{todoItem.id}}" class="active" routerLink="/detail/{{todoItem.id}}">{{todoItem.title}}</a>
+                            &nbsp;
+                            <button type="button" class="close" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </ng-template>
 
                     </label>

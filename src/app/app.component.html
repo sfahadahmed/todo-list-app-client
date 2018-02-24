@@ -1,10 +1,16 @@
 <div class="container">
-  <h1>{{ title }}</h1>
+  <h1 class="color-blue"><span class="fa fa-check-square"></span>&nbsp;{{ title }}</h1>
 
   <nav>
-      <button type="button" class="btn btn-primary" routerLink="/list">Show List</button>
-      <button type="button" class="btn btn-success" routerLink="/add">Add Item</button>
-      <button type="button" class="btn btn-warning">About</button>
+      <button type="button" class="btn btn-primary" routerLink="/list">
+        <span class="fa fa-list-ul"></span>&nbsp;Show List
+      </button>
+      <button type="button" class="btn btn-success" routerLink="/add">
+        <span class="fa fa-plus-circle"></span>&nbsp;Add Item
+      </button>
+      <button type="button" class="btn btn-warning" routerLink="/about">
+        <span class="fa fa-info-circle"></span>&nbsp;About
+      </button>
   </nav>
 
   <p></p>
