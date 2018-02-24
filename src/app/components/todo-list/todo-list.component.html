@@ -4,7 +4,11 @@
 
         <h4 class="card-title">Todo List</h4>
 
-        <p class="card-text">Here is a list of todo items:</p>
+        <!-- SHOW ONLY WHEN LIST HAS MORE THAN ZERO ITEMS  -->
+        <p class="card-text" *ngIf="todoItems.length > 0">Here is a list of todo items. You may need to click the "checkbox" to mark them done.</p>
+
+        <!-- SHOW ONLY WHEN LIST HAS EXACTLY ZERO ITEMS  -->
+        <p class="card-text" *ngIf="todoItems.length == 0">There are no todo items in list. You may need to add new items. Click the "Add Item" button to do so.</p>
 
         <ul class="list-group">
             <span *ngFor="let todoItem of todoItems">
