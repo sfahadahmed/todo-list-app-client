@@ -14,7 +14,11 @@ export class TodoListComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.todoService.getAll().subscribe( response => {
+    this.getData();
+  }
+
+  getData(): void {
+    this.todoService.getAll().subscribe(response => {
       this.todoItems = response
     });
   }
