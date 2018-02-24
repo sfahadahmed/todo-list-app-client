@@ -13,6 +13,7 @@ import { TodoService } from '../../services/todo.service';
 export class TodoAddComponent implements OnInit {
 
   @Input() todoItem: TodoItem;
+  error: string = null;
 
   constructor(private todoService: TodoService,
     private route: ActivatedRoute,
@@ -25,8 +26,14 @@ export class TodoAddComponent implements OnInit {
   add(): void {
     console.log("-- add() --");
     console.log(this.todoItem);
+    this.error = null;
+
     this.todoService.create(this.todoItem).subscribe(response => {
       this.location.back();
+    }, err => {
+      console.log('ERROR');
+      console.log(err);
+      this.error = err.message;
     });
   }
 

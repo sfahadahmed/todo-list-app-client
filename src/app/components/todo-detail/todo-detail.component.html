@@ -29,5 +29,11 @@
         </button>
       </div>
 
+      <div class="form-group">
+        <div class="alert alert-danger" *ngIf="error">
+          <strong>Error!</strong> {{error}}}.
+        </div>
+      </div>
+
     </div>
   </div>

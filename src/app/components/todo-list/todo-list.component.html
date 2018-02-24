@@ -1,5 +1,5 @@
 <!-- SHOW ONLY WHEN SERVICE IS AVAILABLE -->
-<div class="card" *ngIf="todoItems">
+<div class="card" *ngIf="todoItems && !error">
     <div class="card-body">
 
         <h4 class="card-title">Todo List</h4>
@@ -44,9 +44,12 @@
 </div>
 
 <!-- SHOW ONLY WHEN SERVICE IS UNAVAILABLE -->
-<div class="card" *ngIf="!todoItems">
+<div class="card" *ngIf="error">
     <div class="card-body">
         <h4 class="card-title">Service is unavailable</h4>
         <p class="card-text">We can't access the service to fetch the todo items. You may have to wait until the service becomes available.</p>
+        <div class="alert alert-danger" *ngIf="error">
+            <strong>Error!</strong> {{error}}}.
+        </div>
     </div>
 </div>

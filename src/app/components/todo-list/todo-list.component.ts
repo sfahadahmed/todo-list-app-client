@@ -10,6 +10,7 @@ import { TodoService } from '../../services/todo.service';
 export class TodoListComponent implements OnInit {
 
   todoItems: Array<any>;
+  error: string = null;
 
   constructor(private todoService: TodoService) { }
 
@@ -18,8 +19,14 @@ export class TodoListComponent implements OnInit {
   }
 
   getData(): void {
+    this.error = null;
+
     this.todoService.getAll().subscribe(response => {
       this.todoItems = response
+    }, err => {
+      console.log('ERROR');
+      console.log(err);
+      this.error = err.message;
     });
   }
 
@@ -29,6 +36,7 @@ export class TodoListComponent implements OnInit {
     var el = document.getElementById('todoitem_'+todoitem.id);
     if(el){
       todoitem.active = !todoitem.active;
+      this.error = null;
 
       this.todoService.update(todoitem.id, todoitem).subscribe(response => {
         // toggle CSS styles
@@ -36,13 +44,23 @@ export class TodoListComponent implements OnInit {
           el.setAttribute('class', 'active');
         else
           el.setAttribute('class', 'inactive');
+      }, err => {
+        console.log('ERROR');
+        console.log(err);
+        this.error = err.message;
       });
     }
   }
 
   delete(id: number): void {
+    this.error = null;
+
     this.todoService.delete(id).subscribe(response => {
       this.getData();
+    }, err => {
+      console.log('ERROR');
+      console.log(err);
+      this.error = err.message;
     });
   }
 
