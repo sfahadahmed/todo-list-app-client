@@ -11,6 +11,7 @@ export class TodoListComponent implements OnInit {
 
   todoItems: Array<any>;
   error: string = null;
+  loading: boolean = false;
 
   constructor(private todoService: TodoService) { }
 
@@ -20,13 +21,16 @@ export class TodoListComponent implements OnInit {
 
   getData(): void {
     this.error = null;
+    this.loading = true;
 
     this.todoService.getAll().subscribe(response => {
-      this.todoItems = response
+      this.todoItems = response;
+      this.loading = false;
     }, err => {
       console.log('ERROR');
       console.log(err);
       this.error = err.message;
+      this.loading = false;
     });
   }
 
@@ -37,6 +41,7 @@ export class TodoListComponent implements OnInit {
     if(el){
       todoitem.active = !todoitem.active;
       this.error = null;
+      this.loading = true;
 
       this.todoService.update(todoitem.id, todoitem).subscribe(response => {
         // toggle CSS styles
@@ -44,16 +49,20 @@ export class TodoListComponent implements OnInit {
           el.setAttribute('class', 'active');
         else
           el.setAttribute('class', 'inactive');
+
+          this.loading = false;
       }, err => {
         console.log('ERROR');
         console.log(err);
         this.error = err.message;
+        this.loading = false;
       });
     }
   }
 
   delete(id: number): void {
     this.error = null;
+    this.loading = true;
 
     this.todoService.delete(id).subscribe(response => {
       this.getData();
@@ -61,6 +70,7 @@ export class TodoListComponent implements OnInit {
       console.log('ERROR');
       console.log(err);
       this.error = err.message;
+      this.loading = false;
     });
   }
 

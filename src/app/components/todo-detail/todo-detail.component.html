@@ -1,3 +1,5 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
 <div class="card" *ngIf="todoItem">
     <div class="card-body">
 
@@ -32,6 +34,12 @@
       <div class="form-group">
         <div class="alert alert-danger" *ngIf="error">
           <strong>Error!</strong> {{error}}}.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="alert alert-success" *ngIf="success">
+          <strong>Success!</strong> Todo item has been updated.
         </div>
       </div>
 

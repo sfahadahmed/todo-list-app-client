@@ -1,3 +1,5 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
 <!-- SHOW ONLY WHEN SERVICE IS AVAILABLE -->
 <div class="card" *ngIf="todoItems && !error">
     <div class="card-body">

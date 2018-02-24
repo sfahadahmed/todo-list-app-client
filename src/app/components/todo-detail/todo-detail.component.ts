@@ -13,7 +13,9 @@ import { TodoService } from '../../services/todo.service';
 export class TodoDetailComponent implements OnInit {
 
   @Input() todoItem: TodoItem;
+  success: boolean = false;
   error: string = null;
+  loading: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private location: Location,
@@ -25,30 +27,38 @@ export class TodoDetailComponent implements OnInit {
 
   getData(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+    this.success = false;
     this.error = null;
+    this.loading = true;
 
     this.todoService.get(id).subscribe(response => {
       console.log('-- RESPONSE --');
       console.log(response);
       this.todoItem = response;
+      this.loading = false;
     }, err => {
       console.log('ERROR');
       console.log(err);
       this.error = err.message;
+      this.loading = false;
     });
   }
 
   update(): void {
     console.log("-- update() --");
     console.log(this.todoItem);
+    this.success = false;
     this.error = null;
+    this.loading = true;
 
     this.todoService.update(this.todoItem.id, this.todoItem).subscribe(response => {
-      this.location.back();
+      this.loading = false;
+      this.success = true;
     }, err => {
       console.log('ERROR');
       console.log(err);
       this.error = err.message;
+      this.loading = false;
     });
   }
 

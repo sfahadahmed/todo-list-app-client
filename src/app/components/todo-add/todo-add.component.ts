@@ -13,7 +13,9 @@ import { TodoService } from '../../services/todo.service';
 export class TodoAddComponent implements OnInit {
 
   @Input() todoItem: TodoItem;
+  success: boolean = false;
   error: string = null;
+  loading: boolean = false;
 
   constructor(private todoService: TodoService,
     private route: ActivatedRoute,
@@ -26,14 +28,18 @@ export class TodoAddComponent implements OnInit {
   add(): void {
     console.log("-- add() --");
     console.log(this.todoItem);
+    this.success = false;
     this.error = null;
+    this.loading = true;
 
     this.todoService.create(this.todoItem).subscribe(response => {
-      this.location.back();
+      this.loading = false;
+      this.success = true;
     }, err => {
       console.log('ERROR');
       console.log(err);
       this.error = err.message;
+      this.loading = false;
     });
   }
 
