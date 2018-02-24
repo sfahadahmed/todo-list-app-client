@@ -1,3 +1,4 @@
+<!-- SHOW ONLY WHEN SERVICE IS AVAILABLE -->
 <div class="card" *ngIf="todoItems">
     <div class="card-body">
 
@@ -28,4 +29,12 @@
             </span>
         </ul>
     </div>
-  </div>
+</div>
+
+<!-- SHOW ONLY WHEN SERVICE IS UNAVAILABLE -->
+<div class="card" *ngIf="!todoItems">
+    <div class="card-body">
+        <h4 class="card-title">Service is unavailable</h4>
+        <p class="card-text">We can't access the service to fetch the todo items. You may have to wait until the service becomes available.</p>
+    </div>
+</div>
